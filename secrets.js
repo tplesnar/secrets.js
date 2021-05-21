@@ -23,14 +23,14 @@
         // AMD. Register as an anonymous module.
         define([], function() {
             /*eslint-disable no-return-assign */
-            return (root.secrets = factory(window.crypto))
+            return (root.secrets = factory(root.crypto))
             /*eslint-enable no-return-assign */
         })
     } else if (typeof exports === "object") {
         // Node. Does not work with strict CommonJS, but
         // only CommonJS-like environments that support module.exports,
         // like Node.
-        module.exports = factory(require("crypto"))
+        module.exports = factory(root.crypto)
     } else {
         // Browser globals (root is window)
         root.secrets = factory(root.crypto)
